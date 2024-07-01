@@ -1,0 +1,1 @@
+const appli_icon = "assets/ressources/icons/logo_HerShield.jpeg";

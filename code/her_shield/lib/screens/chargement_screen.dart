@@ -4,6 +4,7 @@ import 'package:her_shield/styles/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:her_shield/styles/custom_image_box_chargement_screen.dart';
 
+import '../styles/assets.dart';
 import 'home_screen.dart';
 
 class ChargementScreen extends StatelessWidget {
@@ -28,7 +29,7 @@ class ChargementScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomImageBox(imagePath:
+                      CustomImageBox(imagePath: appli_icon),
                     ],
                   ),
                 ),
