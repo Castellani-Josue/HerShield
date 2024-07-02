@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:her_shield/cubit/chargement_screen_cubit.dart';
 import 'package:her_shield/styles/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,70 +13,89 @@ class ChargementScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    return MaterialApp(
       routes: {
         '/start': (context) => const ChargementScreen(),
-        'home': (context) => HomeScreen(),
+        '/home': (context) => const HomeScreen(),
       },
       debugShowCheckedModeBanner: false,
-      home:  BlocProvider(
+      home: BlocProvider(
         create: (context) => ChargementScreenCubit(),
         child: BlocBuilder<ChargementScreenCubit, ChargementScreenState>(
           builder: (context, state) {
             if (state is ChargementScreenInitial) {
-              return  const Scaffold(
-              backgroundColor: backgroundColor,
-                body: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CustomImageBox(imagePath: appli_icon),
-                    ],
+              return Scaffold(
+                backgroundColor: backgroundColor,
+                body: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(backgroundchargement),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: const Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomImageBox(imagePath: appicon),
+                      ],
+                    ),
                   ),
                 ),
               );
             } else {
               return Scaffold(
                 backgroundColor: backgroundColor,
-                body: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Center(
-                          child: SizedBox(
-                            width: 100,
-                            height: 100,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(25),
-                              child: Image.asset(
-                                'assets/images/playstore.png',
-                                fit: BoxFit.cover,
+                body: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(backgroundchargement),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Center(
+                            child: SizedBox(
+                              width: 100,
+                              height: 100,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(25),
+                                child: Image.asset(
+                                  appicon,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const Expanded(
-                        flex: 1,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularProgressIndicator(
-                              backgroundColor: backgroundColor,
-                            ),
-                          ],
+                        const Expanded(
+                          flex: 1,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(
+                                backgroundColor: backgroundColor,
+                                color: Colors.white,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               );
             }
-          }
-      )),
+          },
+        ),
+      ),
     );
   }
 }

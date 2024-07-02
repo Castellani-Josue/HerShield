@@ -1,1 +1,2 @@
-const appli_icon = "assets/ressources/icons/logo_HerShield.jpeg";
+const appicon = "assets/ressources/icons/playstore.png";
+const backgroundchargement = "assets/ressources/background/background_chargement.png";
