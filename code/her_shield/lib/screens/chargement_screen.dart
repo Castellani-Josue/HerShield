@@ -30,7 +30,7 @@ class ChargementScreen extends StatelessWidget {
                 body: Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(backgroundchargement),
+                      image: AssetImage(backgroundchargement2),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -50,7 +50,7 @@ class ChargementScreen extends StatelessWidget {
                 body: Container(
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage(backgroundchargement),
+                      image: AssetImage(backgroundchargement2),
                       fit: BoxFit.cover,
                     ),
                   ),
