@@ -65,6 +65,7 @@ flutter:
   assets:
       - assets/ressources/icons/playstore.png
       - assets/ressources/background/background_chargement.png
+      - assets/ressources/background/background_chargement2.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
