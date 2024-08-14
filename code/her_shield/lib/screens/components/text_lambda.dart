@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import '../../styles/colors.dart';
 
 class TextLambda extends Text {
-  const TextLambda(String data, {Key? key}) : super(data, key: key,
-    style: const TextStyle(
+   TextLambda(String data, {Key? key, required fontSize}) : super(data, key: key,
+    style:  TextStyle(
       color: textChargementColor,
-      fontSize: 18,
+      fontSize: fontSize,
       fontWeight: FontWeight.bold,
       fontFamily: 'Times New Roman',
     ),

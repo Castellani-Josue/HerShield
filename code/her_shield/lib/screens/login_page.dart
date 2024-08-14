@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          flex: 1,
+          flex: 3,
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -30,8 +30,8 @@ class LoginPage extends StatelessWidget {
                   constraints: const BoxConstraints(
                     maxWidth: 250,
                   ),
-                  child: const TextLambda(
-                    'Ready for a new safe adventure with HerShield?',
+                  child:  TextLambda(
+                    'Ready for a new safe adventure with HerShield?', fontSize: 18.0,
                   ),
                 ),
               ],
@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 1,
+          flex: 4,
           child: Center(
             child: Column(
               children: [
@@ -63,6 +63,13 @@ class LoginPage extends StatelessWidget {
                     obscureText: true,
                   ),
                 ),
+                // Forgot password?
+                const SizedBox(height: 10),
+                TextLambda('Forgot password?', fontSize: 13.0),
+                const SizedBox(height: 10),
+                // Login button
+
+                TextLambda('Don\'t have an account? Sign up!', fontSize: 13.0),
               ],
             ),
           ),
@@ -70,7 +77,7 @@ class LoginPage extends StatelessWidget {
         const Expanded(flex : 1,child: Center(
           child : Column(
             children : [
-              
+
             ],
           )
         ))
