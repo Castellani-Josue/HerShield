@@ -20,7 +20,7 @@ class ChargementScreen extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/start': (context) => const ChargementScreen(),
-        '/SingUp': (context) => const SignUpScreen(),
+        '/SignUp': (context) => SignUpScreen(),
         '/home': (context) => const HomeScreen(),
       },
       debugShowCheckedModeBanner: false,
@@ -62,6 +62,7 @@ class ChargementScreen extends StatelessWidget {
               );
             } else {
               return Scaffold(
+                resizeToAvoidBottomInset: false,
                 backgroundColor: backgroundColor,
                 body: Container(
                   decoration: const BoxDecoration(

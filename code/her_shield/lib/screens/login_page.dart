@@ -1,4 +1,8 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:her_shield/screens/components/login_signup_btn.dart';
+import 'package:her_shield/screens/components/text_forgot_password.dart';
 import 'package:her_shield/screens/components/text_lambda.dart';
 import '../styles/assets.dart';
 import '../styles/colors.dart';
@@ -17,6 +21,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Expanded(flex : 1 , child : Container(),),
         Expanded(
           flex: 3,
           child: Center(
@@ -63,13 +68,27 @@ class LoginPage extends StatelessWidget {
                     obscureText: true,
                   ),
                 ),
-                // Forgot password?
+                // Forgot password? 
                 const SizedBox(height: 10),
-                TextLambda('Forgot password?', fontSize: 13.0),
-                const SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerRight, // Aligner à gauche
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: TextForgotPassword('Forgot password?', fontSize: 11.5),
+                  ),
+                ),
+                const SizedBox(height: 15),
                 // Login button
-
-                TextLambda('Don\'t have an account? Sign up!', fontSize: 13.0),
+                LoginSignUpBtn('Login', onPressed: () {
+                  Navigator.pushNamed(context, '/home');
+                }),
+                const SizedBox(height: 10),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/SignUp');
+                  },
+                 child: TextLambda('Don\'t have an account? Sign up!', fontSize: 13.0),
+                )
               ],
             ),
           ),
