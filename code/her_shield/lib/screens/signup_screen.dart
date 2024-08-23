@@ -43,7 +43,7 @@ class SignUpScreen extends StatelessWidget {
               ],
             ),),
             Expanded(
-              flex: 6,
+              flex: 3,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +64,7 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 7,
+              flex: 4,
               child: Center(
                 child: SingleChildScrollView(
                   child: Column(
@@ -110,7 +110,7 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
             const Expanded(
-                flex : 1,
+                flex : 2,
                 child: Center(
                     child : Column(
                       children : [
