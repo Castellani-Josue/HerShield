@@ -74,6 +74,12 @@ class SignUpScreen extends StatelessWidget {
                         color: textFiieldSignUpColor,
                         margin: const EdgeInsets.only(left: 24, right: 24),
                         child: TextFieldConnection(
+                          validator: (String? value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Enter your username';
+                            }
+                            return null;
+                          },
                           controller: usernameController,
                           hintText: 'Enter your username',
                           obscureText: false,
@@ -84,6 +90,12 @@ class SignUpScreen extends StatelessWidget {
                         color: textFiieldSignUpColor,
                         margin: const EdgeInsets.only(left: 24, right: 24, top: 20),
                         child: TextFieldConnection(
+                          validator: (String? value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Enter your password';
+                            }
+                            return null;
+                          },
                           controller: passwordController,
                           hintText: 'Enter your password',
                           obscureText: true,
@@ -94,6 +106,12 @@ class SignUpScreen extends StatelessWidget {
                         color: textFiieldSignUpColor,
                         margin: const EdgeInsets.only(left: 24, right: 24, top: 20),
                         child: TextFieldConnection(
+                          validator: (String? value) {
+                            if (value == null || value.trim().isEmpty) {
+                              return 'Confirm your password';
+                            }
+                            return null;
+                          },
                           controller: passwordConfirmController,
                           hintText: 'Confirm your password',
                           obscureText: true,

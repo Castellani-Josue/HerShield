@@ -3,10 +3,12 @@ import '../../styles/colors.dart';
 
 class TextFieldConnection extends TextField {
 
+  final FormFieldValidator<String> validator;
 
-   TextFieldConnection({Key? key,required TextEditingController controller,
+   TextFieldConnection( {Key? key,required TextEditingController controller,
     required hintText,
      required obscureText,
+     required this.validator,
    }) : super(key: key,
     controller: controller,
     obscureText: obscureText,
