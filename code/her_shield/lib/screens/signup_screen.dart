@@ -1,23 +1,38 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:her_shield/screens/components/login_signup_btn.dart';
 
+import '../Firestore/users.dart';
 import '../styles/assets.dart';
 import '../styles/colors.dart';
 import 'components/custom_image_box_chargement_screen.dart';
 import 'components/text_lambda.dart';
 import 'components/textfield_connection.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
 
+
+  const SignUpScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+
+  late final String userId ;
   final TextEditingController usernameController =  TextEditingController();
+
   final TextEditingController passwordController = TextEditingController();
+
   final TextEditingController passwordConfirmController = TextEditingController();
 
-  SignUpScreen({Key? key}) : super(key: key);
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: backgroundColor,
       body: Container(
         decoration: const BoxDecoration(
@@ -71,7 +86,7 @@ class SignUpScreen extends StatelessWidget {
                     children: [
                       // Username
                       Container(
-                        color: textFiieldSignUpColor,
+                        color: textFieldSignUpColor,
                         margin: const EdgeInsets.only(left: 24, right: 24),
                         child: TextFieldConnection(
                           validator: (String? value) {
@@ -87,7 +102,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       // Password
                       Container(
-                        color: textFiieldSignUpColor,
+                        color: textFieldSignUpColor,
                         margin: const EdgeInsets.only(left: 24, right: 24, top: 20),
                         child: TextFieldConnection(
                           validator: (String? value) {
@@ -103,7 +118,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       // Confirm Password
                       Container(
-                        color: textFiieldSignUpColor,
+                        color: textFieldSignUpColor,
                         margin: const EdgeInsets.only(left: 24, right: 24, top: 20),
                         child: TextFieldConnection(
                           validator: (String? value) {
@@ -119,16 +134,47 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 15),
                       // Sign Up Button
-                      LoginSignUpBtn('Sign Up', onPressed: () {
-                        Navigator.pushNamed(context, '/home');
-                      }),
+                      LoginSignUpBtn(
+                          'Sign Up',
+                          onPressed: () async {
+                            setState(() {
+                              _isLoading = true; // Active le chargement
+                            });
+
+                            try {
+                              await FirebaseAuth.instance
+                                  .createUserWithEmailAndPassword(
+                                email: usernameController.text,
+                                password: passwordController.text,
+                              )
+                                  .then((value) {
+                                Navigator.pushReplacementNamed(context, '/home');
+                              });
+                            } on FirebaseAuthException catch (e) {
+                              if (!mounted) return;
+                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                showCloseIcon: true,
+                                duration: const Duration(seconds: 7),
+                                content: Text(e.message ?? 'An unknown error occurred.'),
+                              ));
+                            } finally {
+                              setState(() {
+                                _isLoading = false; // Désactive le chargement
+                                //addUser(emailController.text);
+                                userId = usernameController.text;
+                                createUserWithCustomId(userId,usernameController.text);
+                              });
+                            }
+                          },
+                          isLoading: _isLoading // Passe l'état de chargement
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
             const Expanded(
-                flex : 2,
+                flex : 1,
                 child: Center(
                     child : Column(
                       children : [

@@ -20,7 +20,7 @@ class ChargementScreen extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/start': (context) => const ChargementScreen(),
-        '/SignUp': (context) => SignUpScreen(),
+        '/SignUp': (context) => const SignUpScreen(),
         '/home': (context) => const HomeScreen(),
       },
       debugShowCheckedModeBanner: false,
@@ -71,7 +71,7 @@ class ChargementScreen extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  child:  Center(
+                  child:  const Center(
                     child:
                     LoginPage(),
                        ),
