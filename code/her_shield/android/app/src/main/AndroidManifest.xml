@@ -3,6 +3,7 @@
         android:label="HerShield"
         android:name="${applicationName}"
         android:icon="@mipmap/her_shield_icon">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

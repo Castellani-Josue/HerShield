@@ -25,3 +25,5 @@ Future<void> createUserWithCustomId(String customUserId, String email) async {
     //print('Erreur lors de la création de lutilisateur : $e');
   }
 }
+
+//mthd call before the add of fields customID and email
