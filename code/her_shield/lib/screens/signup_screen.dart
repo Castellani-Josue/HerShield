@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       backgroundColor: backgroundColor,
       body: Container(
         decoration: const BoxDecoration(
@@ -71,7 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         maxWidth: 250,
                       ),
                       child:  TextLambda(
-                        'Join the HerShield army and travel with peace of mind! ', fontSize: 18.0,
+                        'Join the HerShield army and travel with peace of mind! ', fontSize: 17.0,
                       ),
                     ),
                   ],
@@ -81,95 +81,108 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Expanded(
               flex: 4,
               child: Center(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      // Username
-                      Container(
-                        color: textFieldSignUpColor,
-                        margin: const EdgeInsets.only(left: 24, right: 24),
-                        child: TextFieldConnection(
-                          validator: (String? value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return 'Enter your username';
-                            }
-                            return null;
-                          },
-                          controller: usernameController,
-                          hintText: 'Enter your username',
-                          obscureText: false,
-                        ),
-                      ),
-                      // Password
-                      Container(
-                        color: textFieldSignUpColor,
-                        margin: const EdgeInsets.only(left: 24, right: 24, top: 20),
-                        child: TextFieldConnection(
-                          validator: (String? value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return 'Enter your password';
-                            }
-                            return null;
-                          },
-                          controller: passwordController,
-                          hintText: 'Enter your password',
-                          obscureText: true,
-                        ),
-                      ),
-                      // Confirm Password
-                      Container(
-                        color: textFieldSignUpColor,
-                        margin: const EdgeInsets.only(left: 24, right: 24, top: 20),
-                        child: TextFieldConnection(
-                          validator: (String? value) {
-                            if (value == null || value.trim().isEmpty) {
-                              return 'Confirm your password';
-                            }
-                            return null;
-                          },
-                          controller: passwordConfirmController,
-                          hintText: 'Confirm your password',
-                          obscureText: true,
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      // Sign Up Button
-                      LoginSignUpBtn(
-                          'Sign Up',
-                          onPressed: () async {
-                            setState(() {
-                              _isLoading = true; // Active le chargement
-                            });
+                child: Column(
+                  children: [
+                    Expanded(
+                        flex : 2,
+                        child: SingleChildScrollView(
+                          child: Column(
+                      children:[
+                          Container(
+                            color: textFieldSignUpColor,
+                            margin: const EdgeInsets.only(left: 24, right: 24),
+                            child: TextFieldConnection(
+                              validator: (String? value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Enter your username';
+                                }
+                                return null;
+                              },
+                              controller: usernameController,
+                              hintText: 'Enter your username',
+                              obscureText: false,
+                            ),
+                          ),
+                          // Password
+                          Container(
+                            color: textFieldSignUpColor,
+                            margin: const EdgeInsets.only(left: 24, right: 24, top: 20),
+                            child: TextFieldConnection(
+                              validator: (String? value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Enter your password';
+                                }
+                                return null;
+                              },
+                              controller: passwordController,
+                              hintText: 'Enter your password',
+                              obscureText: true,
+                            ),
+                          ),
+                          // Confirm Password
+                          Container(
+                            color: textFieldSignUpColor,
+                            margin: const EdgeInsets.only(left: 24, right: 24, top: 20),
+                            child: TextFieldConnection(
+                              validator: (String? value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Confirm your password';
+                                }
+                                return null;
+                              },
+                              controller: passwordConfirmController,
+                              hintText: 'Confirm your password',
+                              obscureText: true,
+                            ),
+                          ),
+                      ]
+                    ),
+                        )),
+                    // Username
+                   Expanded(
+                       flex: 1,
+                       child: Column(
+                     children: [
+                       LoginSignUpBtn(
+                           'Sign Up',
+                           onPressed: () async {
+                             setState(() {
+                               _isLoading = true; // Active le chargement
+                             });
 
-                            try {
-                              await FirebaseAuth.instance
-                                  .createUserWithEmailAndPassword(
-                                email: usernameController.text,
-                                password: passwordController.text,
-                              )
-                                  .then((value) {
-                                Navigator.pushReplacementNamed(context, '/home');
-                              });
-                            } on FirebaseAuthException catch (e) {
-                              if (!mounted) return;
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                showCloseIcon: true,
-                                duration: const Duration(seconds: 7),
-                                content: Text(e.message ?? 'An unknown error occurred.'),
-                              ));
-                            } finally {
-                              setState(() {
-                                _isLoading = false; // Désactive le chargement
-                                //addUser(emailController.text);
-                                userId = usernameController.text;
-                                createUserWithCustomId(userId,usernameController.text);
-                              });
-                            }
-                          },
-                          isLoading: _isLoading // Passe l'état de chargement
-                      ),
-                    ],
-                  ),
+                             try {
+                               await FirebaseAuth.instance
+                                   .createUserWithEmailAndPassword(
+                                 email: usernameController.text,
+                                 password: passwordController.text,
+                               )
+                                   .then((value) {
+                                 Navigator.pushReplacementNamed(context, '/home');
+                               });
+                             } on FirebaseAuthException catch (e) {
+                               if (!mounted) return;
+                               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                 showCloseIcon: true,
+                                 duration: const Duration(seconds: 7),
+                                 content: Text(e.message ?? 'An unknown error occurred.'),
+                               ));
+                             } finally {
+                               setState(() {
+                                 _isLoading = false; // Désactive le chargement
+                                 //addUser(emailController.text);
+                                 userId = usernameController.text;
+                                 createUserWithCustomId(userId,usernameController.text);
+                               });
+                             }
+                           },
+                           isLoading: _isLoading // Passe l'état de chargement
+                       ),
+                     ],
+                   )),
+                    //const SizedBox(height: 15),
+                    // Sign Up Button
+
+                  ],
                 ),
               ),
             ),
