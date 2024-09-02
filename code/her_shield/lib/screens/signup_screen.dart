@@ -157,7 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                  password: passwordController.text,
                                )
                                    .then((value) {
-                                 Navigator.pushReplacementNamed(context, '/camera');
+                                 Navigator.pushReplacementNamed(context, '/FacialRecognition');
                                });
                              } on FirebaseAuthException catch (e) {
                                if (!mounted) return;

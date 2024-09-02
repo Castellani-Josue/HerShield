@@ -27,7 +27,8 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.her_shield"
-    compileSdkVersion flutter.compileSdkVersion
+    //compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {

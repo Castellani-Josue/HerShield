@@ -9,3 +9,5 @@ Color textFieldLoginFillColor = Colors.grey.shade200;
 const textChargementColor =   Color.fromRGBO(0, 0, 0, 1);
 const primaryColor =   Color.fromRGBO(0, 0, 0, 1);
 Color buttonColor = Colors.grey.shade200;
+Color facialRecognitionCustomDialogBoxBoxDecoration = const Color.fromRGBO(255, 255,255, 1);
+Color facialRecognitionCustomDialogBoxBoxDecorationShadow = const Color.fromRGBO(0, 0,0, 1);

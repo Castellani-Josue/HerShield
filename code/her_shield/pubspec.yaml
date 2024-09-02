@@ -41,8 +41,10 @@ dependencies:
   firebase_auth: ^4.16.0
   firebase_core: ^2.24.2
   cloud_firestore: ^4.14.0
-  flutter_mrz_scanner: ^2.1.0
-  permission_handler: ^11.0.1
+  permission_handler: ^10.4.5
+  flutter_mrz_scanner: ^2.0.0
+  cnic_scanner: ^0.0.4
+  image_picker: ^1.0.8
 
 dev_dependencies:
   flutter_test:

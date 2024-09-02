@@ -23,8 +23,8 @@ class ChargementScreen extends StatelessWidget {
         '/start': (context) => const ChargementScreen(),
         '/SignUp': (context) => const SignUpScreen(),
         '/home': (context) => const HomeScreen(),
-       // '/FacialRecognition': (context) => const FacialRecognitionScreen(),
-        '/camera': (context) =>  CameraPage(),
+       '/FacialRecognition': (context) => const FacialRecognitionScreen(),
+        //'/camera': (context) =>  CameraPage(),
       },
       debugShowCheckedModeBanner: false,
       home: BlocProvider(
