@@ -1,8 +1,9 @@
+
 import 'package:flutter/material.dart';
-import 'package:her_shield/library/cnic_scanner-0.0.4/lib/cnic_scanner.dart';
-import 'package:her_shield/library/cnic_scanner-0.0.4/lib/model/cnic_model.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../modified_packages/cnic_scanner.dart';
+import '../modified_packages/model/cnic_model.dart';
 import '../styles/colors.dart';
 import 'components/FacialRecognitionDialogBox.dart';
 
@@ -32,6 +33,7 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
     setState(() {
       _cnicModel = cnicModel;
       nameTEController.text = _cnicModel.cnicHolderName;
+
       sexTEController.text = _cnicModel.cnicHolderSex;
       cnicTEController.text = _cnicModel.cnicNumber;
       dobTEController.text = _cnicModel.cnicHolderDateOfBirth;
