@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:her_shield/screens/components/text_lambda.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../modified_packages/cnic/cnic_scanner.dart';
@@ -52,19 +53,16 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
             const SizedBox(
               height: 18,
             ),
-            Text('Enter ID Card Details',
-                style: TextStyle(
-                    color: textFieldLoginFocusedBorderColor,
-                    fontSize: 23.0,
-                    fontWeight: FontWeight.bold)),
+            TextLambda('Enter ID Card Details', fontSize: 22.0),
             const SizedBox(
               height: 5,
             ),
-            Text('To verify your Account, please enter your CNIC details.',
+            const Text('To verify your Account, please enter your Id Card details.',
                 style: TextStyle(
-                    color: textFieldLoginFocusedBorderColor,
-                    fontSize: 15.0,
-                    fontWeight: FontWeight.w500)),
+                    color: textfieldIdCardDetailsColor,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Times New Roman',
+                    fontSize: 14.0),),
             const SizedBox(
               height: 35,
             ),
@@ -134,10 +132,10 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'National Register N°',
                         style: TextStyle(
-                            color: textFieldLoginFocusedBorderColor,
+                            color: textfieldIdCardDetailsColor,
                             fontSize: 13.0,
                             fontWeight: FontWeight.bold),
                       ),
@@ -146,20 +144,20 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                       ),
                       Row(
                         children: [
-                          Image.asset("assets/images/sex.png",
+                          Image.asset("assets/ressources/images/idCarte.jpeg",
                               width: 40, height: 30),
                           Expanded(
                             child: TextField(
                               controller: textEditingController,
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 hintText: '01.04.21-016.46',
-                                hintStyle: TextStyle(color: textFieldLoginFocusedBorderColor),
+                                hintStyle: TextStyle(color: textfieldIdCardDetailsColor),
                                 border: InputBorder.none,
                                 isDense: true,
-                                contentPadding: const EdgeInsets.only(left: 5.0),
+                                contentPadding: EdgeInsets.only(left: 5.0),
                               ),
-                              style: TextStyle(
-                                  color: textFieldLoginFocusedBorderColor,
+                              style: const TextStyle(
+                                  color: textfieldIdCardDetailsColor,
                                   fontWeight: FontWeight.bold),
                               textInputAction: TextInputAction.done,
                               keyboardType: TextInputType.number,
@@ -195,7 +193,7 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
               padding: const EdgeInsets.only(left: 5),
               child: Icon(
                 (text == "Name") ? Icons.person : Icons.date_range,
-                color: textFieldLoginFocusedBorderColor,
+                color: textfieldIdCardDetailsColor,
                 size: 17,
               ),
             ),
@@ -209,8 +207,8 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                     const EdgeInsets.only(left: 15.0, top: 5, bottom: 3),
                     child: Text(
                       text.toUpperCase(),
-                      style: TextStyle(
-                          color: textFieldLoginFocusedBorderColor,
+                      style: const TextStyle(
+                          color: textfieldIdCardDetailsColor,
                           fontSize: 12,
                           fontWeight: FontWeight.bold),
                     ),
@@ -223,8 +221,8 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                         hintText: (text == "Name" || text == "Sex") ? "User Name" : 'DD/MM/YYYY',
                         border: InputBorder.none,
                         isDense: true,
-                        hintStyle: TextStyle(
-                            color: textFieldLoginFocusedBorderColor,
+                        hintStyle: const TextStyle(
+                            color: textfieldIdCardDetailsColor,
                             fontSize: 14,
                             fontWeight: FontWeight.bold),
                         contentPadding: const EdgeInsets.all(0),
@@ -275,13 +273,13 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10.0)),
           gradient: LinearGradient(colors: <Color>[
-            textFieldLoginFocusedBorderColor,
-            textFieldLoginFocusedBorderColor,
-            textFieldLoginFocusedBorderColor,
+            btnScanIdCardCheckColor2,
+            btnScanIdCardCheckColor1,
+            btnScanIdCardCheckColor1,
           ]),
         ),
         padding: const EdgeInsets.all(12.0),
-        child: const Text('Scan ID Card', style: TextStyle(fontSize: 18)),
+        child: const Text('Scan ID Card', style: TextStyle(fontSize: 18,fontFamily: 'Times New Roman',color: textfieldIdCardDetailsColor)),
       ),
     );
   }

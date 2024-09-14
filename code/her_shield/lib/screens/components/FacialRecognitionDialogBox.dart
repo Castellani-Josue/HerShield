@@ -51,7 +51,7 @@ class FacialRecognitionCustomDialogBox extends StatelessWidget {
           ElevatedButton(
             onPressed: onCameraBTNPressed,
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(btnIdCardCheckColor),
+              backgroundColor: MaterialStateProperty.all<Color>(btnSmallIdCardCheckColor),
               padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                 const EdgeInsets.all(15),
               ),
@@ -65,7 +65,7 @@ class FacialRecognitionCustomDialogBox extends StatelessWidget {
           ElevatedButton(
             onPressed: onGalleryBTNPressed,
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(btnIdCardCheckColor),
+              backgroundColor: MaterialStateProperty.all<Color>(btnSmallIdCardCheckColor),
               padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                 const EdgeInsets.all(15),
               ),
