@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../modified_packages/cnic_scanner.dart';
-import '../modified_packages/model/cnic_model.dart';
+import '../modified_packages/cnic/cnic_scanner.dart';
+import '../modified_packages/cnic/model/cnic_model.dart';
 import '../styles/colors.dart';
 import 'components/FacialRecognitionDialogBox.dart';
 
@@ -19,7 +19,6 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
       sexTEController = TextEditingController(),
       cnicTEController = TextEditingController(),
       dobTEController = TextEditingController(),
-      doiTEController = TextEditingController(),
       doeTEController = TextEditingController();
 
   /// you're required to initialize this model class as method you used
@@ -37,7 +36,6 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
       sexTEController.text = _cnicModel.cnicHolderSex;
       cnicTEController.text = _cnicModel.cnicNumber;
       dobTEController.text = _cnicModel.cnicHolderDateOfBirth;
-      doiTEController.text = _cnicModel.cnicIssueDate;
       doeTEController.text = _cnicModel.cnicExpiryDate;
     });
   }
@@ -82,9 +80,6 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                   _dataField(
                       text: 'Date of Birth',
                       textEditingController: dobTEController),
-                  _dataField(
-                      text: 'Date of Card Issue',
-                      textEditingController: doiTEController),
                   _dataField(
                       text: 'Date of Card Expire',
                       textEditingController: doeTEController),

@@ -73,11 +73,6 @@ class CnicScanner {
       cnicDates.add(_cnicDetails.cnicExpiryDate);
     }
     if (cnicDates.length > 0 &&
-        _cnicDetails.cnicIssueDate.length == 10 &&
-        !cnicDates.contains(_cnicDetails.cnicIssueDate)) {
-      cnicDates.add(_cnicDetails.cnicIssueDate);
-    }
-    if (cnicDates.length > 0 &&
         _cnicDetails.cnicExpiryDate.length == 10 &&
         !cnicDates.contains(_cnicDetails.cnicExpiryDate)) {
       cnicDates.add(_cnicDetails.cnicExpiryDate);
@@ -97,7 +92,6 @@ class CnicScanner {
           textColor: Colors.white,
           fontSize: 16.0);
     } else if (cnicDates.length == 2) {
-      _cnicDetails.cnicIssueDate = cnicDates[0];
       _cnicDetails.cnicExpiryDate = cnicDates[1];
       if (!isFrontScan)
         Fluttertoast.showToast(
@@ -109,13 +103,11 @@ class CnicScanner {
             fontSize: 16.0);
     } else if (cnicDates.length == 3) {
       _cnicDetails.cnicHolderDateOfBirth = cnicDates[0].replaceAll(".", "/");
-      _cnicDetails.cnicIssueDate = cnicDates[1].replaceAll(".", "/");
       _cnicDetails.cnicExpiryDate = cnicDates[2].replaceAll(".", "/");
     }
     textRecognizer.close();
     if (_cnicDetails.cnicNumber.length > 0 &&
         _cnicDetails.cnicHolderDateOfBirth.length > 0 &&
-        _cnicDetails.cnicIssueDate.length > 0 &&
         _cnicDetails.cnicExpiryDate.length > 0) {
       print('==================== SMART CARD DETAILS $_cnicDetails');
       return Future.value(_cnicDetails);

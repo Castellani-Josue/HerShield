@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:her_shield/screens/components/text_lambda.dart';
 
 import '../../styles/colors.dart';
 
@@ -42,19 +43,37 @@ class FacialRecognitionCustomDialogBox extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          const Text(
+          TextLambda(
             "Choose an option",
-            style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
+            fontSize: 20.0,
           ),
           const SizedBox(height: 24.0),
           ElevatedButton(
             onPressed: onCameraBTNPressed,
-            child: const Text("Camera"),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(btnIdCardCheckColor),
+              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                const EdgeInsets.all(15),
+              ),
+            ),
+            child: TextLambda(
+              "Camera",
+              fontSize: 14.0,
+            )
           ),
           const SizedBox(height: 16.0),
           ElevatedButton(
             onPressed: onGalleryBTNPressed,
-            child: const Text("Gallery"),
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all<Color>(btnIdCardCheckColor),
+              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                const EdgeInsets.all(15),
+              ),
+            ),
+            child: TextLambda(
+              "Gallery",
+              fontSize: 14.0,
+            )
           ),
           const SizedBox(height: 16.0),
           Align(
@@ -63,7 +82,10 @@ class FacialRecognitionCustomDialogBox extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
-              child: const Text("Cancel"),
+              child: TextLambda(
+                "Cancel",
+                fontSize: 14.0,
+              )
             ),
           ),
         ],

@@ -16,7 +16,7 @@ class LoginSignUpBtn extends ElevatedButton {
     ) // Affiche un indicateur de chargement
         : TextLambda(data, fontSize: 14.0),
     style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(buttonColor),
+      backgroundColor: MaterialStateProperty.all<Color>(buttonColorSignUpLogin),
       padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
         const EdgeInsets.all(15),
       ),

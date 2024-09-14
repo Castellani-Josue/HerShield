@@ -150,6 +150,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                _isLoading = true; // Active le chargement
                              });
 
+                             // Vérifier si les mots de passe correspondent
+                             if (passwordController.text != passwordConfirmController.text) {
+                               ScaffoldMessenger.of(context).showSnackBar(
+                                 const SnackBar(
+                                   content: Text('Passwords do not match.'),
+                                 ),
+                               );
+                               setState(() {
+                                 _isLoading = false; // Désactive le chargement
+                               });
+                               return; // Arrête l'exécution si les mots de passe ne correspondent pas
+                             }
+
                              try {
                                await FirebaseAuth.instance
                                    .createUserWithEmailAndPassword(
