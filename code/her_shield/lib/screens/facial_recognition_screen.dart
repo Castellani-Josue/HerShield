@@ -148,6 +148,7 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                               width: 40, height: 30),
                           Expanded(
                             child: TextField(
+                              enabled: false,
                               controller: textEditingController,
                               decoration: const InputDecoration(
                                 hintText: '01.04.21-016.46',
@@ -216,9 +217,10 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                   Padding(
                     padding: const EdgeInsets.only(left: 15.0, bottom: 5),
                     child: TextField(
+                      enabled: false,
                       controller: textEditingController,
                       decoration: InputDecoration(
-                        hintText: (text == "Name" || text == "Sex") ? "User Name" : 'DD/MM/YYYY',
+                        hintText: (text == "Name") ? "User Name" : (text == "Sex") ? 'User Sex' : 'DD/MM/YYYY',
                         border: InputBorder.none,
                         isDense: true,
                         hintStyle: const TextStyle(
@@ -231,7 +233,7 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                           color: textFieldLoginFocusedBorderColor,
                           fontWeight: FontWeight.bold),
                       textInputAction: TextInputAction.done,
-                      keyboardType: (text == "Name")
+                      keyboardType: (text == "Name" || text == "Sex")
                           ? TextInputType.text
                           : TextInputType.number,
                       textAlign: TextAlign.left,
