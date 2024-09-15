@@ -3,13 +3,12 @@ import 'package:her_shield/screens/components/text_lambda.dart';
 
 import '../../styles/colors.dart';
 
-class FacialRecognitionCustomDialogBox extends StatelessWidget {
+class NFCScanIdCardDialogBox extends StatelessWidget {
   final VoidCallback onCameraBTNPressed;
-  final VoidCallback onGalleryBTNPressed;
 
-  const FacialRecognitionCustomDialogBox({
+
+  const NFCScanIdCardDialogBox({
     required this.onCameraBTNPressed,
-    required this.onGalleryBTNPressed,
     Key? key,
   }) : super(key: key);
 
@@ -48,44 +47,33 @@ class FacialRecognitionCustomDialogBox extends StatelessWidget {
             fontSize: 20.0,
           ),
           const SizedBox(height: 24.0),
-          ElevatedButton(
-            onPressed: onCameraBTNPressed,
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(btnSmallIdCardCheckColor),
-              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                const EdgeInsets.all(15),
-              ),
+          Center(
+            child: ElevatedButton(
+                onPressed: onCameraBTNPressed,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(btnSmallIdCardCheckColor),
+                  padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    const EdgeInsets.all(15),
+                  ),
+                ),
+                child: TextLambda(
+                  "Camera",
+                  fontSize: 14.0,
+                )
             ),
-            child: TextLambda(
-              "Camera",
-              fontSize: 14.0,
-            )
           ),
           const SizedBox(height: 16.0),
-          ElevatedButton(
-            onPressed: onGalleryBTNPressed,
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all<Color>(btnSmallIdCardCheckColor),
-              padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                const EdgeInsets.all(15),
-              ),
-            ),
-            child: TextLambda(
-              "Gallery",
-              fontSize: 14.0,
-            )
-          ),
           const SizedBox(height: 16.0),
           Align(
             alignment: Alignment.bottomRight,
             child: TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: TextLambda(
-                "Cancel",
-                fontSize: 14.0,
-              )
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+                child: TextLambda(
+                  "Cancel",
+                  fontSize: 14.0,
+                )
             ),
           ),
         ],

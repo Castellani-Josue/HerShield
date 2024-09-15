@@ -16,3 +16,4 @@ Color btnSmallIdCardCheckColor = Colors.grey.shade200;
 Color btnScanIdCardCheckColor1 = Colors.grey.shade400;
 Color btnScanIdCardCheckColor2 = const Color.fromRGBO(0, 0, 0, 1);
 const textfieldIdCardDetailsColor = Color.fromRGBO(0, 0, 0, 1);
+

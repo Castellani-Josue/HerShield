@@ -97,6 +97,10 @@ class CnicScanner {
                       selectedText.contains(".", 5)))) {
             cnicDates.add(selectedText.replaceAll(".", "/"));
           }
+          // Vérifier les dates avec le format dd MM yyyy où le jour est au format 20 06 2003
+          else if (selectedText.length == 10 && selectedText[2] == ' ' && selectedText[5] == ' ') {
+            cnicDates.add(selectedText.replaceAll(" ", "/"));
+          }
         }
       }
     }

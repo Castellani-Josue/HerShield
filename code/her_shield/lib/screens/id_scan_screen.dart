@@ -6,16 +6,16 @@ import 'package:image_picker/image_picker.dart';
 import '../modified_packages/cnic/cnic_scanner.dart';
 import '../modified_packages/cnic/model/cnic_model.dart';
 import '../styles/colors.dart';
-import 'components/FacialRecognitionDialogBox.dart';
+import 'components/nfc_scan_id_card_dialog_box.dart';
 
-class FacialRecognitionScreen extends StatefulWidget {
-  const FacialRecognitionScreen({super.key});
+class CardIdScanScreen extends StatefulWidget {
+  const CardIdScanScreen({super.key});
 
   @override
-  FacialRecognitionScreenState createState() => FacialRecognitionScreenState();
+  CardIdScanScreenState createState() => CardIdScanScreenState();
 }
 
-class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
+class CardIdScanScreenState extends State<CardIdScanScreen> {
   TextEditingController nameTEController = TextEditingController(),
       givenNameTEController = TextEditingController(),
       sexTEController = TextEditingController(),
@@ -86,7 +86,7 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  _getScanIDCardBtn(),
+                  _getScanIDCardNFCBtn(),
                 ],
               ),
             )
@@ -248,7 +248,45 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
         ));
   }
 
-  Widget _getScanIDCardBtn() {
+  Widget _getScanIDCardNFCBtn() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        elevation: 5,
+        shape:
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+        textStyle: const TextStyle(color: Colors.white),
+        padding: const EdgeInsets.all(0.0),
+      ),
+      onPressed: () {
+        /// this is the custom dialog that takes 2 arguments "Camera" and "Gallery"
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return NFCScanIdCardDialogBox(onCameraBTNPressed: () {
+
+              });
+            });
+      },
+      child: Container(
+        alignment: Alignment.center,
+        width: 500,
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+          gradient: LinearGradient(colors: <Color>[
+            btnScanIdCardCheckColor2,
+            btnScanIdCardCheckColor1,
+            btnScanIdCardCheckColor1,
+          ]),
+        ),
+        padding: const EdgeInsets.all(12.0),
+        child: const Text('Scan ID Card', style: TextStyle(fontSize: 18,fontFamily: 'Times New Roman',color: textfieldIdCardDetailsColor)),
+      ),
+    );
+  }
+  }
+
+
+  /*Widget _getScanIDCardBtn() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         elevation: 5,
@@ -287,4 +325,4 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
       ),
     );
   }
-}
+}*/
