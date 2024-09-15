@@ -17,6 +17,7 @@ class FacialRecognitionScreen extends StatefulWidget {
 
 class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
   TextEditingController nameTEController = TextEditingController(),
+      givenNameTEController = TextEditingController(),
       sexTEController = TextEditingController(),
       cnicTEController = TextEditingController(),
       dobTEController = TextEditingController(),
@@ -33,7 +34,7 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
     setState(() {
       _cnicModel = cnicModel;
       nameTEController.text = _cnicModel.cnicHolderName;
-
+      givenNameTEController.text = _cnicModel.cnicHolderGivenName;
       sexTEController.text = _cnicModel.cnicHolderSex;
       cnicTEController.text = _cnicModel.cnicNumber;
       dobTEController.text = _cnicModel.cnicHolderDateOfBirth;
@@ -73,6 +74,7 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                 children: [
                   _dataField(
                       text: 'Name', textEditingController: nameTEController),
+                  _dataField(text: 'Given names', textEditingController: givenNameTEController),
                   _dataField(text :'Sex', textEditingController: sexTEController),
                   _idCardField(textEditingController: cnicTEController),
                   _dataField(
@@ -220,7 +222,7 @@ class FacialRecognitionScreenState extends State<FacialRecognitionScreen> {
                       enabled: false,
                       controller: textEditingController,
                       decoration: InputDecoration(
-                        hintText: (text == "Name") ? "User Name" : (text == "Sex") ? 'User Sex' : 'DD/MM/YYYY',
+                        hintText: (text == "Name") ? "User Name" : (text == "Sex") ? 'User Sex' :  (text.trim() == "Given names") ? 'User Given Names' : 'DD/MM/YYYY',
                         border: InputBorder.none,
                         isDense: true,
                         hintStyle: const TextStyle(

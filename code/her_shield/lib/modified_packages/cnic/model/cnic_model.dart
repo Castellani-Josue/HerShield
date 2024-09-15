@@ -3,6 +3,7 @@
 class CnicModel {
   String cnicNumber = "";
   String cnicHolderName = "";
+  String cnicHolderGivenName = "";
   String cnicHolderSex = "";
   String cnicExpiryDate = "";
   String cnicHolderDateOfBirth = "";
@@ -16,6 +17,7 @@ class CnicModel {
         cnicExpiryDate.isEmpty ? "" : 'Cnic Expiry Date = $cnicExpiryDate\n';
     string +=
         cnicHolderName.isEmpty ? "" : 'Cnic Holder Name = $cnicHolderName\n';
+    string += cnicHolderGivenName.isEmpty ? "" : 'Cnic Holder Given Name = $cnicHolderGivenName\n';
     string += cnicHolderDateOfBirth.isEmpty
         ? ""
         : 'Cnic Holder DoB = $cnicHolderDateOfBirth\n';

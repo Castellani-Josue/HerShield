@@ -39,18 +39,51 @@ class CnicScanner {
     final RecognizedText recognisedText =
         await textRecognizer.processImage(imageToScan);
     bool isNameNext = false;
+    bool isSexNext = false;
+    bool isGivenNameNext = false;
     for (TextBlock block in recognisedText.blocks) {
       for (TextLine line in block.lines) {
         if (isNameNext) {
           _cnicDetails.cnicHolderName = line.text;
           isNameNext = false;
         }
+        if(isSexNext){
+          _cnicDetails.cnicHolderSex = line.text;
+          isSexNext = false;
+        }
+        if(isGivenNameNext){
+          _cnicDetails.cnicHolderGivenName = line.text;
+          isGivenNameNext = false;
+        }
         if (line.text.toLowerCase() == "name" ||
             line.text.toLowerCase() == "nane" ||
             line.text.toLowerCase() == "nam" ||
-            line.text.toLowerCase() == "ame") {
+            line.text.toLowerCase() == "ame" ||
+            line.text.toLowerCase() == "nom" ||
+            line.text.toLowerCase() == "no" ||
+            line.text.toLowerCase() == "om") {
+          print('NAME OK');
           isNameNext = true;
         }
+        if(line.text.toLowerCase() == "given" ||
+            line.text.toLowerCase() == "giv" ||
+            line.text.toLowerCase() == "ive" ||
+            line.text.toLowerCase() == "ven"){
+          print('GIVEN NAME OK');
+          isGivenNameNext = true;
+        }
+        if(line.text.toLowerCase() == "sex" ||
+            line.text.toLowerCase() == "sexe" ||
+            line.text.toLowerCase() == "exe" ||
+            line.text.toLowerCase() == "ex" ||
+            line.text.toLowerCase() == "gender" ||
+            line.text.toLowerCase() == "gende" ||
+            line.text.toLowerCase() == "ender" ||
+            line.text.toLowerCase() == "gend"){
+          print('SEX OK');
+          isSexNext = true;
+        }
+
         for (TextElement element in line.elements) {
           String selectedText = element.text;
           if (selectedText.length == 15 &&
