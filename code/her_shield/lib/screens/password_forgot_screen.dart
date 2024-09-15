@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../styles/assets.dart';
+import 'chargement_screen.dart';
 import 'components/custom_image_box_chargement_screen.dart';
 import 'components/login_signup_btn.dart';
 import 'components/text_lambda.dart';
@@ -78,19 +79,47 @@ class PasswordForgotScreenState extends State<PasswordForgotScreen> {
       ),
     );
 
-
   Future<void> resetPassword() async {
-    // final BuildContext context = this.context; // Capture context locally
+
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailController.text.trim());
-      if(!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Password reset email has been sent to your email address'),
+
+      // Show redirection message dialog
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title:  TextLambda('Redirecting', fontSize: 16.0),
+            content: TextLambda('You will be redirected to the login screen shortly.', fontSize: 14.0),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the redirection dialog
+                },
+                child: TextLambda('Close', fontSize: 12.0,),
+              ),
+            ],
+          );
+        },
+      );
+
+      // Wait for 3 seconds before navigating
+      await Future.delayed(const Duration(seconds: 3));
+
+      // Close the redirection dialog
+      Navigator.of(context, rootNavigator: true).pop();
 
 
-      ));
+      // Navigate to the ChargementScreen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const ChargementScreen()), // Remplacez ChargementScreen par le nom de votre écran de chargement
+      );
     } on FirebaseAuthException catch (e) {
+      Navigator.of(context, rootNavigator: true).pop(); // Close the loading dialog on error
+
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         showCloseIcon: true,
         duration: const Duration(seconds: 5),
@@ -98,7 +127,6 @@ class PasswordForgotScreenState extends State<PasswordForgotScreen> {
       ));
     }
   }
-
 
 
 

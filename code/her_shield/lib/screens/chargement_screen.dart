@@ -23,6 +23,7 @@ class ChargementScreen extends StatelessWidget {
       routes: {
         '/start': (context) => const ChargementScreen(),
         '/signUp': (context) => const SignUpScreen(),
+        '/login': (context) => const LoginPage(),
         '/home': (context) => const HomeScreen(),
        '/cardIdScan': (context) => const CardIdScanScreen(),
         '/passwordForgot': (context) => const PasswordForgotScreen(),
