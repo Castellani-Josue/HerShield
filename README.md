@@ -8,15 +8,7 @@ Nowadays, women's safety is highly threatened. Creating an app that can help wom
 
 ## Features
 
-- **Trip Check-up**: Monitor a trip (e.g., a 2 km journey) with checkpoints every 500 meters. If no issues are detected, the checkpoint is marked as verified.
 
-- **Adding Safe Contacts**: Add trusted contacts to receive SMS alerts or notifications in case of problems.
-
-- **Facial Recognition**: Create an account based on facial recognition to ensure that the user is a woman before accessing the app.
-
-- **Emergency Signal**: Send a distress signal based on location, which will be transmitted to all users of the app within a certain radius.
-
-- **"Close Contact" Account**: Ability to create an account for close contacts who can access the location of the user or users who have accepted the close contact.
 
 ## Storage
 
