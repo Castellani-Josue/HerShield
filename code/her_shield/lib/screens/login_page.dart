@@ -97,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 24.0),
                     child: GestureDetector(
                       onTap: () {
+                        Navigator.pushNamed(context, '/passwordForgot');
                         },
                         child: TextForgotPassword('Forgot password?', fontSize: 11.5)
                     ),
@@ -138,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, '/SignUp');
+                    Navigator.pushNamed(context, '/signUp');
                   },
                  child: TextLambda('Don\'t have an account? Sign up!', fontSize: 13.0),
                 )

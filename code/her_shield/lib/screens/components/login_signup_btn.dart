@@ -24,8 +24,6 @@ class LoginSignUpBtn extends ElevatedButton {
   );
 }
 
-
-
 /*class LoginSignUpBtn extends ElevatedButton {
 
 

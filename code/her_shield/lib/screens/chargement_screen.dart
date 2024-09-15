@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:her_shield/cubit/chargement_screen_cubit.dart';
 import 'package:her_shield/screens/id_scan_screen.dart';
+import 'package:her_shield/screens/password_forgot_screen.dart';
 import 'package:her_shield/screens/signup_screen.dart';
 import 'package:her_shield/screens/components/circular_progress_indicator.dart';
 import 'package:her_shield/styles/colors.dart';
@@ -21,9 +22,10 @@ class ChargementScreen extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/start': (context) => const ChargementScreen(),
-        '/SignUp': (context) => const SignUpScreen(),
+        '/signUp': (context) => const SignUpScreen(),
         '/home': (context) => const HomeScreen(),
-       '/CardIdScan': (context) => const CardIdScanScreen(),
+       '/cardIdScan': (context) => const CardIdScanScreen(),
+        '/passwordForgot': (context) => const PasswordForgotScreen(),
         //'/camera': (context) =>  CameraPage(),
       },
       debugShowCheckedModeBanner: false,
