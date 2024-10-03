@@ -20,7 +20,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
 
-  late final String userId ;
+  String userId = '';
   final TextEditingController usernameController =  TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
@@ -167,7 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                await FirebaseAuth.instance
                                    .createUserWithEmailAndPassword(
                                  email: usernameController.text,
-                                 password: passwordController.text,
+                                  password: passwordController.text,
                                )
                                    .then((value) {
                                  Navigator.pushReplacementNamed(context, '/cardIdScan');
@@ -183,7 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                setState(() {
                                  _isLoading = false; // Désactive le chargement
                                  //addUser(emailController.text);
-                                 userId = usernameController.text;
+                                 userId = userId.isEmpty ? usernameController.text : userId;
                                  createUserWithCustomId(userId,usernameController.text);
                                });
                              }

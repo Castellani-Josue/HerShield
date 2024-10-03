@@ -258,7 +258,6 @@ class CardIdScanScreenState extends State<CardIdScanScreen> {
         padding: const EdgeInsets.all(0.0),
       ),
       onPressed: () {
-        /// this is the custom dialog that takes 2 arguments "Camera" and "Gallery"
         showDialog(
             context: context,
             builder: (BuildContext context) {
